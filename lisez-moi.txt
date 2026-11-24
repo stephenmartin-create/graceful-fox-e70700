@@ -1,0 +1,15 @@
+CAP PÊCHE — PACK COMPLET 1.0
+
+Le dossier contient toute l'application et la photo originale fournie pour Elsa II.
+
+PUBLICATION NETLIFY :
+1. Décompresser ce ZIP.
+2. Ouvrir le dossier cap-peche-complet.
+3. Envoyer le CONTENU de ce dossier à la racine du site Netlify existant (index.html doit être à la racine du déploiement).
+4. Attendre le statut Published.
+
+FONCTIONS : carte de découverte Leaflet/OpenStreetMap, filtres, position GPS du téléphone, fiches des ports et sites, météo vent/rafales/vagues/houle via Open-Meteo, favoris, carnet local de pêche, installation PWA.
+
+LIMITES IMPORTANTES : ce produit est une application de découverte et d'organisation, pas un traceur de navigation certifié. Les points sont indicatifs. Il ne fournit pas de cartes marines officielles, de profondeur garantie, de route nautique sûre, ni de validation réglementaire automatique. Connexion Internet nécessaire pour les cartes et les prévisions. Favoris et carnet sont stockés localement sur l'appareil et ne sont pas synchronisés entre appareils.
+
+Photo d'accueil : fichier elsa-ii.jpg, copie exacte de la photo fournie par l'utilisateur.
