@@ -35,6 +35,7 @@
           <button data-go="ports">⚓ Ports & escales</button>
           <button data-go="meteo">🌊 Météo marine</button>
           <button data-go="peche">🐟 Carnet de pêche</button>
+          <button data-go="escapades">🌴 Promenades & escapades</button>
         </div>
         <div class="boat-card">
           <img src="assets/elsa-ii.jpg" alt="Elsa II, bateau ambassadeur de CAP PÊCHE">
@@ -102,6 +103,122 @@
     <section class="view" id="view-pique-nique">
       <div class="page-head"><span class="eyebrow">PAUSE AU GRAND AIR</span><h1>Pique-nique</h1><p>Des idées de pauses nature, à terre ou près de l'eau. Vérifie les accès, protections et interdictions.</p></div>
       <div id="picnicList" class="place-list"></div>
+    </section>
+
+
+    <section class="view" id="view-escapades">
+      <div class="escapade-hero">
+        <div class="eyebrow">ELSA II · PETITE CAMARGUE</div>
+        <h1>Promenades <span>& escapades</span></h1>
+        <p>Un terrain de découverte élargi d’Aigues-Mortes et Saintes-Maries-de-la-Mer jusqu’à Palavas et Maguelone, avec les canaux, le Lez et le Petit Rhône.</p>
+        <div class="escapade-actions">
+          <button class="primary-btn" data-esc-filter="balade">🚶 Promenades</button>
+          <button class="secondary-btn" data-esc-filter="pique">🧺 Pique-nique</button>
+          <button class="secondary-btn" data-esc-filter="visite">📸 Visites</button>
+          <button class="secondary-btn" data-esc-filter="bateau">⚓ En bateau</button>
+        </div>
+        <img class="escapade-cover" src="https://www.tourisme-occitanie.com/uploads/2023/03/5-le-grau-du-roi-unclesam-stockadobe-bd.jpg" alt="Canal du Grau-du-Roi et bateaux de pêche" loading="lazy">
+        <small class="photo-credit">Photo : Tourisme Occitanie</small>
+      </div>
+
+      <div class="content-pad">
+        <div class="notice"><b>Choisis ton programme</b><p>Les durées de marche sont des estimations tranquilles. Les distances de promenade ci-dessous reprennent les parcours publiés par la Ville du Grau-du-Roi.</p></div>
+        <div class="section-heading"><div><span class="eyebrow">À PIED OU À VÉLO</span><h2>Les plus belles balades</h2></div></div>
+        <div id="walkRoutes" class="escapade-grid"></div>
+
+        <div class="section-heading"><div><span class="eyebrow">PAUSE GOURMANDE</span><h2>Où pique-niquer ?</h2></div></div>
+        <div id="picnicPlaces" class="escapade-grid"></div>
+
+        <div class="section-heading"><div><span class="eyebrow">PATRIMOINE & NATURE</span><h2>À visiter</h2></div></div>
+        <div id="visitPlaces" class="escapade-grid"></div>
+
+        <div class="section-heading"><div><span class="eyebrow">DÉCOUVRIR LE PORT</span><h2>Sorties sur l'eau</h2></div></div>
+        <div id="boatOutings" class="escapade-grid"></div>
+
+
+        <div class="section-heading"><div><span class="eyebrow">DU CANAL À LA CAMARGUE</span><h2>Les grands itinéraires nautiques</h2></div></div>
+        <div id="canalOutings" class="escapade-grid"></div>
+        <div class="canal-notice">
+          <h3>🛟 Les canaux à connaître avant de partir</h3>
+          <ul>
+            <li><b>Canal du Rhône à Sète :</b> axe principal entre le secteur de Saint-Gilles et Sète, avec la section Palavas–Maguelone et des branches secondaires vers Aigues-Mortes et Frontignan/Thau.</li>
+            <li><b>Le Lez :</b> accès fluvial à Palavas et à son port intérieur ; respecter les limites locales et les consignes de la capitainerie.</li>
+            <li><b>Canal de la Peyrade :</b> embranchement secondaire dans le secteur de Frontignan, à ne pas confondre avec le canal principal.</li>
+            <li><b>Petit Rhône :</b> depuis l'écluse de Saint-Gilles vers la mer ; la dernière approche de Port Gardian aux Saintes-Maries se prépare comme une approche maritime séparée.</li>
+            <li><b>Branche d'Aigues-Mortes :</b> itinéraire fluvial spécifique, avec ponts et règles propres.</li>
+          </ul>
+          <p><b>Règle essentielle :</b> les routes dessinées dans cette rubrique sont des repères de découverte, pas des routes nautiques calculées. Ne pas se fier aux traits de la carte grand public pour franchir un pont, une écluse, un chenal ou une embouchure.</p>
+          <div class="place-actions">
+            <a href="https://www.vnf.fr/vnf/services/sif-canal-du-rhone-a-sete-et-saone/" target="_blank" rel="noopener">VNF — infos fluviales en temps réel ↗</a>
+            <a href="https://www.canaldurhoneasete-thau.fr/index.php/avisalabatellerie/" target="_blank" rel="noopener">Avis à la batellerie ↗</a>
+            <a href="https://www.vnf.fr/vnf/app/uploads/2026/02/VNF_batellerie_2026_vdef.pdf" target="_blank" rel="noopener">Guide VNF 2026 ↗</a>
+          </div>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">AVANT DE DÉBARQUER</span><h2>Accostage & escales</h2></div></div>
+        <div class="berthing-card">
+          <img src="https://www.tourismegard.com/uploads/2022/08/grau-du-roi-drone.jpg" alt="Le vieux phare et le port du Grau-du-Roi" loading="lazy">
+          <div class="berthing-body">
+            <h3>Port-Camargue — capitainerie</h3>
+            <p>Pour une escale à Port-Camargue, contacte la capitainerie avant l'arrivée afin de confirmer la disponibilité et les modalités d'accueil.</p>
+            <div class="berthing-facts"><span>📻 VHF canal 9</span><span>☎ 04 66 51 10 45</span><span>🕐 Capitainerie H24 annoncée par le port</span></div>
+            <div class="place-actions">
+              <a href="tel:+33466511045">Appeler la capitainerie</a>
+              <a href="https://www.portcamargue.com/accueil-et-services.html" target="_blank" rel="noopener">Accueil des escales ↗</a>
+              <a href="https://www.portcamargue.com/situation-et-acces.html" target="_blank" rel="noopener">Accès nautique officiel ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="berthing-card">
+          <img src="https://image-tc.galaxy.tf/wijpeg-5pvzzmlzhvfrio08s6l76mz2x/file-7-1.jpg?width=960" alt="Quai et bateaux du port du Grau-du-Roi" loading="lazy">
+          <div class="berthing-body">
+            <h3>Port fluviomaritime du Grau-du-Roi</h3>
+            <p>Le port intercommunal est situé sur le canal du Vidourle, entre le pont levant et le pont tournant. Appelle le gestionnaire pour savoir si un accueil temporaire est possible : les 150 postes annoncés sont des contrats annuels.</p>
+            <div class="berthing-facts"><span>☎ 04 66 73 55 06</span><span>📻 Pont tournant : VHF 73</span></div>
+            <div class="place-actions">
+              <a href="tel:+33466735506">Appeler le port</a>
+              <a href="https://ville-legrauduroi.fr/les-ports-et-les-ponts/" target="_blank" rel="noopener">Ponts et horaires officiels ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="berthing-card">
+          <img src="https://www.palavas-tourisme.com/app/uploads/palavas-tourisme/2022/06/thumbs/port-palavas-1920x960.jpg" alt="Port de Palavas-les-Flots" loading="lazy">
+          <div class="berthing-body">
+            <h3>Palavas-les-Flots — port et port fluvial</h3>
+            <p>Le port de plaisance et le port fluvial Paul-Riquet sont deux secteurs distincts. Contacte la capitainerie pour identifier le bassin adapté à Elsa II et confirmer l'accès depuis le Lez.</p>
+            <div class="berthing-facts"><span>📻 VHF canal 9</span><span>☎ 04 67 07 73 50 (port de plaisance)</span><span>☎ 04 67 07 73 48 (port fluvial)</span></div>
+            <div class="place-actions"><a href="tel:+33467077350">Capitainerie plaisance</a><a href="tel:+33467077348">Port fluvial</a><a href="https://palavaslesflots.com/attractive/ports/port-fluvial/" target="_blank" rel="noopener">Infos port fluvial ↗</a></div>
+          </div>
+        </div>
+        <div class="berthing-card">
+          <img src="https://www.palavas-tourisme.com/app/uploads/palavas-tourisme/2022/06/thumbs/cathedrale-maguelone-1920x960.jpg" alt="Cathédrale de Maguelone" loading="lazy">
+          <div class="berthing-body">
+            <h3>Maguelone — visite à terre, amarrage à confirmer</h3>
+            <p>Le canal passe près de la presqu'île et de la cathédrale. Je n'indique aucun ponton comme garanti : demande à VNF et au domaine si un débarquement depuis un bateau privé est autorisé et possible. L'accès terrestre officiel se fait notamment par la passerelle du Pilou.</p>
+            <div class="place-actions"><a href="https://www.palavas-tourisme.com/decouvrir/histoire-et-patrimoine/la-cathedrale-de-maguelone/" target="_blank" rel="noopener">Accès officiel à Maguelone ↗</a></div>
+          </div>
+        </div>
+        <div class="berthing-card">
+          <img src="https://portgardiancamargue.fr/wp-content/uploads/2021/06/port-gardian.jpg" alt="Port Gardian aux Saintes-Maries-de-la-Mer" loading="lazy">
+          <div class="berthing-body">
+            <h3>Port Gardian — Saintes-Maries-de-la-Mer</h3>
+            <p>Port de plaisance accessible par la mer. Pour une escale, appelle la capitainerie et annonce-toi sur VHF canal 9 avant l'entrée. Vérifie la météo et l'approche du chenal.</p>
+            <div class="berthing-facts"><span>📻 VHF canal 9</span><span>☎ 04 90 97 85 87</span></div>
+            <div class="place-actions"><a href="tel:+33490978587">Appeler Port Gardian</a><a href="https://portgardiancamargue.fr/questions-frequentes/" target="_blank" rel="noopener">Infos plaisanciers ↗</a></div>
+          </div>
+        </div>
+
+        <div class="notice danger-note"><b>Important — navigation et débarquement</b><p>Une plage, une digue ou un quai de promenade n'est pas automatiquement un lieu d'accostage autorisé. Ne débarque pas sur l'Espiguette et ne mouille pas dans les zones protégées ou de baignade sans autorisation explicite. Vérifie les horaires de pont, le tirant d'eau, les restrictions et l'accueil auprès des gestionnaires avant de t'engager dans le canal.</p></div>
+        <div class="section-heading"><div><span class="eyebrow">PRÉPARER LA SORTIE</span><h2>Avant de larguer les amarres</h2></div></div>
+        <div class="prep-grid">
+          <button class="dash-card" data-go="meteo"><span class="dash-icon">🌦️</span><b>Consulter la météo marine</b><small>Vent, rafales, vagues et BMS</small></button>
+          <button class="dash-card" data-go="sortie"><span class="dash-icon">🧭</span><b>Checklist de départ</b><small>Équipage, sécurité et bateau</small></button>
+          <button class="dash-card" data-go="carte"><span class="dash-icon">🗺️</span><b>Ouvrir la carte</b><small>Repères géographiques indicatifs</small></button>
+        </div>
+        <p class="small-muted">Les liens de carte servent à se repérer à terre ou à localiser un lieu. Ils ne calculent pas de route nautique sûre et ne remplacent pas les cartes marines officielles.</p>
+        <p class="photo-credit">Photos : Office de Tourisme du Grau-du-Roi, Tourisme Occitanie et Gard Tourisme. Les photos sont chargées depuis les sites sources et nécessitent une connexion Internet.</p>
+      </div>
     </section>
 
     <section class="view" id="view-meteo">
@@ -182,7 +299,7 @@
     <button class="nav-item more-nav" id="moreBtn"><span>☰</span><small>Plus</small></button>
   </nav>
   <div class="more-menu" id="moreMenu" hidden>
-    <button data-view="mouillages">🌿 Mouillages & plages</button><button data-view="decouvertes">📍 Découvertes</button><button data-view="restaurants">🍽️ Restaurants</button><button data-view="pique-nique">🧺 Pique-nique</button><button data-view="meteo">🌊 Météo marine</button><button data-view="sortie">🧭 Préparer ma sortie</button><button data-view="technique">🔧 Elsa II technique</button><button data-view="carnet">📒 Carnet de bord</button>
+    <button data-view="escapades">🌴 Promenades & escapades</button><button data-view="mouillages">🌿 Mouillages & plages</button><button data-view="decouvertes">📍 Découvertes</button><button data-view="restaurants">🍽️ Restaurants</button><button data-view="pique-nique">🧺 Pique-nique</button><button data-view="meteo">🌊 Météo marine</button><button data-view="sortie">🧭 Préparer ma sortie</button><button data-view="technique">🔧 Elsa II technique</button><button data-view="carnet">📒 Carnet de bord</button>
   </div>
   <footer>CAP PÊCHE PRO · ELSA II <span>La Méditerranée à portée de main</span></footer>
 </div>
