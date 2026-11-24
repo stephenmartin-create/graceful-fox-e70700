@@ -1,26 +1,192 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#082d43"><meta name="description" content="CAP PÊCHE — le compagnon des plaisanciers et pêcheurs de Méditerranée.">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CAP PÊCHE"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#082b3b">
+<meta name="description" content="CAP PÊCHE PRO — le compagnon nautique méditerranéen d'Elsa II, de Sète à Marseille.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-<title>CAP PÊCHE — La Méditerranée à portée de main</title>
+<link rel="stylesheet" href="styles.css">
+<title>CAP PÊCHE PRO — Elsa II</title>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="#accueil"><span class="brand-mark">⚓</span><span>CAP <b>PÊCHE</b><small>LA MÉDITERRANÉE À PORTÉE DE MAIN</small></span></a><button id="installBtn" class="install-btn" hidden>Installer l’application</button></header>
-<main>
-<section id="accueil" class="hero"><div class="hero-copy"><span class="eyebrow">TON COMPAGNON EN MER</span><h1>Prends le large.<br><em>Vis la Méditerranée.</em></h1><p>Prépare tes sorties, consulte la météo, découvre le littoral et garde tes repères de pêche à portée de main.</p><button class="primary" data-go="carte">Explorer la carte <span>→</span></button><div class="hero-pills"><span>⚓ Ports & escales</span><span>🌊 Météo marine</span><span>🐟 Carnet de pêche</span></div></div><div class="hero-art"><img class="hero-photo" src="elsa-ii.jpg" alt="La véritable barquette Elsa II au port"><span class="hero-coord">ELSA II · BATEAU AMBASSADEUR</span></div></section>
-<nav class="quick-nav" aria-label="Rubriques"><button class="active" data-tab="carte">⌖ <span>Carte</span></button><button data-tab="meteo">☀ <span>Météo</span></button><button data-tab="lieux">⚓ <span>Découvertes</span></button><button data-tab="peche">🐟 <span>Pêche</span></button><button data-tab="favoris">☆ <span>Favoris</span></button><button data-tab="carnet">▤ <span>Mon carnet</span></button></nav>
-<section id="panel-carte" class="panel active"><div class="section-head"><div><span class="eyebrow">ZONE PILOTE</span><h2>Carte du littoral</h2><p>Du Grau-du-Roi à Sète, avec les repères de la Camargue et de Thau.</p></div><button id="locateBtn" class="secondary">◎ Me localiser</button></div><div class="map-tools"><button id="zoneBtn" class="filter active">⌖ Zone pilote</button><button class="filter active" data-filter="all">Tout</button><button class="filter" data-filter="port">⚓ Ports</button><button class="filter" data-filter="anchorage">Mouillages à vérifier</button><button class="filter" data-filter="site">✦ Sites</button><button class="filter" data-filter="fishing">🐟 Pêche</button></div><div id="map" role="application" aria-label="Carte de découverte du littoral méditerranéen"></div><p class="map-note"><b>Important :</b> carte de découverte uniquement. Elle ne remplace pas une carte marine officielle, les instruments de bord, les avis aux navigateurs ni les arrêtés. Les repères ne constituent ni une route nautique ni une autorisation de mouillage.</p></section>
-<section id="panel-meteo" class="panel"><div class="section-head"><div><span class="eyebrow">CONDITIONS EN MER</span><h2>Météo marine</h2><p>Vent, rafales, vagues et houle — données indicatives du modèle météo.</p></div></div><div class="weather-location"><label for="weatherPlace">Secteur sélectionné<select id="weatherPlace"><option value="43.538,4.135">Le Grau-du-Roi</option><option value="43.56,4.085">La Grande-Motte</option><option value="43.528,3.93">Palavas-les-Flots</option><option value="43.443,3.755">Frontignan</option><option value="43.397,3.696">Sète</option><option value="43.354,3.527">Marseillan</option><option value="43.425,3.605">Mèze</option></select></label><button id="refreshWeather" class="primary">Actualiser</button></div><div id="weatherStatus" class="status" aria-live="polite">Chargement des prévisions…</div><div id="weatherCards" class="weather-grid"><div class="metric"><span>Vent</span><b>—</b><small>km/h</small></div><div class="metric"><span>Rafales</span><b>—</b><small>km/h</small></div><div class="metric"><span>Vagues</span><b>—</b><small>mètres</small></div><div class="metric"><span>Houle</span><b>—</b><small>mètres</small></div></div><div class="notice">Les prévisions peuvent être imprécises près des côtes et évoluer rapidement. Vérifie toujours plusieurs bulletins marins officiels, les horaires de marée si nécessaires, les observations locales et les conditions réelles avant de sortir.</div><p class="source-line">Sources : <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo météo</a> · <a href="https://open-meteo.com/en/docs/marine-weather-api" target="_blank" rel="noreferrer">Open-Meteo Marine</a>.</p></section>
-<section id="panel-lieux" class="panel"><div class="section-head"><div><span class="eyebrow">COINS À DÉCOUVRIR</span><h2>Ports, criques & paysages</h2><p>Des idées d’escales et de découvertes sur notre zone pilote.</p></div></div><div class="notice"><b>À lire avant de mouiller :</b> les sites naturels ci-dessous sont des lieux à découvrir, pas des mouillages autorisés. Les profondeurs, la tenue du fond, l’exposition au vent et les possibilités de nuit au mouillage ne sont pas renseignées sans source hydrographique ou réglementaire vérifiée. Vérifie les zones autorisées, le balisage et les arrêtés en vigueur.</div><div id="placeList" class="place-grid"></div><div class="official-links"><a href="https://www.premar-mediterranee.gouv.fr/arretes" target="_blank" rel="noreferrer">Arrêtés de la Préfecture maritime</a><a href="https://www.geolittoral.developpement-durable.gouv.fr/" target="_blank" rel="noreferrer">GéoLittoral</a><a href="https://www.mer.gouv.fr/navco-le-cap-des-100-000-utilisateurs-franchi" target="_blank" rel="noreferrer">Application Nav&Co</a></div></section>
-<section id="panel-peche" class="panel"><div class="section-head"><div><span class="eyebrow">OBSERVATIONS & SORTIES</span><h2>Mes repères de pêche</h2><p>Les secteurs affichés sont indicatifs. Enregistre tes propres observations.</p></div></div><div id="fishingList" class="place-grid"></div><form id="catchForm" class="form-card"><h3>Ajouter une prise ou une observation</h3><div class="form-row"><label>Espèce / observation<input name="species" required maxlength="60" placeholder="Ex. dorade, loup…"></label><label>Date<input name="date" type="date" required></label></div><div class="form-row"><label>Secteur<input name="area" maxlength="80" placeholder="Ex. au large de…"></label><label>Taille (cm)<input name="size" type="number" min="0" max="300" step="1" placeholder="Facultatif"></label></div><label>Notes<textarea name="notes" rows="3" maxlength="500" placeholder="Météo, marée, technique, observations…"></textarea></label><button class="primary" type="submit">Enregistrer dans mon carnet</button></form><p class="map-note">Respecte les tailles minimales, périodes, quotas, réserves et règles locales. Les repères de cette application ne garantissent aucune présence de poisson.</p></section>
-<section id="panel-favoris" class="panel"><div class="section-head"><div><span class="eyebrow">TES LIEUX PRÉFÉRÉS</span><h2>Mes favoris</h2><p>Les lieux enregistrés sur cet appareil.</p></div></div><div id="favoriteList" class="place-grid"></div></section>
-<section id="panel-carnet" class="panel"><div class="section-head"><div><span class="eyebrow">TES SOUVENIRS EN MER</span><h2>Mon carnet</h2><p>Retrouve tes prises et observations enregistrées sur cet appareil.</p></div></div><div id="catchList" class="catch-list"></div><button id="clearCatches" class="secondary">Effacer mon carnet</button></section>
-</main>
-<footer><div class="footer-brand">⚓ CAP PÊCHE</div><p>Une idée née au bord de la Méditerranée.</p><small>Application de découverte et d’organisation. Elle ne fournit pas de navigation certifiée, de carte marine officielle, de calcul de route nautique ni de garantie de sécurité.</small><div class="source-line">Cartographie © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> · Météo <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></div></footer>
-<div id="installHelp" class="install-help" hidden role="dialog" aria-modal="true" aria-labelledby="installHelpTitle"><div class="install-card"><button class="install-close" type="button" data-close-install aria-label="Fermer">×</button><img src="icon-192.png" alt="" width="64" height="64"><h3 id="installHelpTitle">Installer CAP PÊCHE</h3><div id="installSteps"></div><button class="primary" type="button" data-close-install>J’ai compris</button></div></div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script><script src="app.js"></script>
-</body></html>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#accueil" aria-label="CAP PÊCHE PRO accueil">
+      <span class="brand-mark">⚓</span><span><b>CAP <i>PÊCHE</i></b><small>PRO · LE COMPAGNON EN MER</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-btn" id="installBtn" hidden aria-label="Installer l'application">⇩</button>
+      <button class="icon-btn" id="gpsBtn" title="Me localiser" aria-label="Me localiser">◎</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="view active" id="view-accueil">
+      <div class="hero">
+        <div class="eyebrow">TON COMPAGNON EN MER</div>
+        <h1>Prends le large.<br><span>Vis la Méditerranée.</span></h1>
+        <p>Prépare tes sorties, trouve tes escales, pêche responsable et garde Elsa II en sécurité.</p>
+        <button class="primary-btn" data-go="carte">Explorer la carte <span>→</span></button>
+        <div class="quick-chips">
+          <button data-go="ports">⚓ Ports & escales</button>
+          <button data-go="meteo">🌊 Météo marine</button>
+          <button data-go="peche">🐟 Carnet de pêche</button>
+        </div>
+        <div class="boat-card">
+          <img src="assets/elsa-ii.jpg" alt="Elsa II, bateau ambassadeur de CAP PÊCHE">
+          <div class="boat-caption"><b>ELSA II</b><span>BATEAU AMBASSADEUR</span></div>
+        </div>
+      </div>
+      <div class="content-pad">
+        <div class="section-heading"><div><span class="eyebrow">AVANT DE PARTIR</span><h2>Le point de départ</h2></div><span class="live-dot">● prêt à naviguer</span></div>
+        <div class="dashboard-grid">
+          <button class="dash-card emergency-card" data-go="urgence"><span class="dash-icon">🆘</span><b>Urgence en mer</b><small>196 · VHF 16 · conduite à tenir</small></button>
+          <button class="dash-card" data-go="meteo"><span class="dash-icon">🌤️</span><b>Météo marine</b><small>Vent, rafales et vagues</small></button>
+          <button class="dash-card" data-go="sortie"><span class="dash-icon">🧭</span><b>Préparer ma sortie</b><small>Checklist et équipage</small></button>
+          <button class="dash-card" data-go="technique"><span class="dash-icon">🔧</span><b>Elsa II technique</b><small>Moteur et entretien</small></button>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">LE LITTORAL</span><h2>De Sète à Marseille</h2></div></div>
+        <div class="region-strip">
+          <span>Sète</span><b>›</b><span>Agde</span><b>›</b><span>Camargue</span><b>›</b><span>La Ciotat</span><b>›</b><span>Marseille</span>
+        </div>
+        <div class="notice"><b>⚓ Navigation responsable</b><p>Les repères de la carte ne remplacent jamais une carte marine officielle, les avis aux navigateurs, les instructions des autorités ou les informations de capitainerie. Vérifie toujours les restrictions avant de mouiller ou pêcher.</p></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-carte">
+      <div class="page-head"><span class="eyebrow">EXPLORER LE LITTORAL</span><h1>Carte marine</h1><p>Repères de Sète à Marseille. Appuie sur un marqueur pour afficher sa fiche.</p></div>
+      <div class="map-toolbar">
+        <input id="mapSearch" type="search" placeholder="Rechercher un port, une zone, un lieu…">
+        <select id="mapFilter" aria-label="Filtrer la carte"><option value="all">Tout afficher</option><option value="port">Ports</option><option value="peche">Pêche</option><option value="visite">Découvertes</option><option value="nature">Nature & mouillages à vérifier</option></select>
+      </div>
+      <div id="map" role="application" aria-label="Carte interactive du littoral méditerranéen"></div>
+      <div class="map-legend"><span>⚓ Port</span><span>🐟 Point pêche</span><span>📍 Découverte</span><span>🌿 Nature</span></div>
+      <div id="mapResults" class="place-list"></div>
+      <p class="small-muted pad-x">Les points de pêche issus du document GPS fourni sont des repères indicatifs : leur position, profondeur, nature du fond et légalité doivent être confirmées sur les cartes et textes officiels à jour. Ils ne constituent pas une instruction de navigation.</p>
+    </section>
+
+    <section class="view" id="view-peche">
+      <div class="page-head"><span class="eyebrow">PÊCHE RESPONSABLE</span><h1>Guide de pêche</h1><p>Les points GPS de ton carnet, les espèces et les règles à vérifier avant chaque sortie.</p></div>
+      <div class="notice warning"><b>Réglementation 2026</b><p>En Méditerranée, les pêcheurs de loisir de 16 ans et plus doivent s'enregistrer chaque année via RecFishing. Certaines captures doivent être déclarées le jour même. Vérifie les espèces et obligations applicables à la date de ta sortie.</p><a href="https://www.mer.gouv.fr/peche-de-loisir-en-mer" target="_blank" rel="noopener">Consulter le ministère ↗</a> · <a href="https://recfishing.eu/" target="_blank" rel="noopener">RecFishing ↗</a></div>
+      <div class="filter-row"><button class="filter active" data-fish="all">Tous</button><button class="filter" data-fish="loup">Loup</button><button class="filter" data-fish="daurade">Daurade</button><button class="filter" data-fish="sar">Sar</button><button class="filter" data-fish="congre">Congre</button></div>
+      <div id="fishingList" class="place-list"></div>
+      <button class="primary-btn full" id="addCatchBtn">＋ Ajouter une prise au carnet</button>
+    </section>
+
+    <section class="view" id="view-mouillages">
+      <div class="page-head"><span class="eyebrow">FAIRE ESCALE</span><h1>Mouillages & plages</h1><p>Idées de secteurs à explorer, avec vérification obligatoire des règles locales.</p></div>
+      <div class="notice danger-note"><b>Attention aux zones protégées</b><p>Les Calanques, herbiers de posidonie, zones Natura 2000, réserves et zones de baignade peuvent interdire ou encadrer le mouillage. Aucun lieu ci-dessous n'est présenté comme mouillage autorisé sans vérification réglementaire.</p><a href="https://www.premar-mediterranee.gouv.fr/" target="_blank" rel="noopener">Préfecture maritime Méditerranée ↗</a></div>
+      <div id="anchorageList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-ports">
+      <div class="page-head"><span class="eyebrow">ESCALES & SERVICES</span><h1>Ports & capitaineries</h1><p>Prépare une escale et confirme les places visiteurs, horaires, tirant d'eau et services auprès du port.</p></div>
+      <div id="portsList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-decouvertes">
+      <div class="page-head"><span class="eyebrow">LES PÉPITES DU LITTORAL</span><h1>Découvertes</h1><p>Villages, phares, paysages et sites remarquables à découvrir depuis la mer ou à terre.</p></div>
+      <div id="discoverList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-restaurants">
+      <div class="page-head"><span class="eyebrow">UNE TABLE AU BORD DE L'EAU</span><h1>Restaurants en escale</h1><p>Recherche de restaurants par port. L'accès bateau et la possibilité d'amarrage doivent être confirmés directement.</p></div>
+      <div class="notice"><b>Notre règle</b><p>Un restaurant au bord de l'eau n'est pas forcément accessible en bateau. L'application distingue l'accès nautique confirmé de la simple proximité du port.</p></div>
+      <div id="restaurantList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-pique-nique">
+      <div class="page-head"><span class="eyebrow">PAUSE AU GRAND AIR</span><h1>Pique-nique</h1><p>Des idées de pauses nature, à terre ou près de l'eau. Vérifie les accès, protections et interdictions.</p></div>
+      <div id="picnicList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-meteo">
+      <div class="page-head"><span class="eyebrow">CONDITIONS EN MER</span><h1>Météo marine</h1><p>Choisis un secteur ou utilise ta position pour consulter les conditions estimées.</p></div>
+      <div class="weather-controls"><select id="weatherArea"><option value="43.40,3.70">Sète / Agde</option><option value="43.52,4.14" selected>Port-Camargue</option><option value="43.35,5.05">Côte Bleue</option><option value="43.28,5.37">Marseille</option><option value="43.20,5.55">Calanques / Cassis</option></select><button class="secondary-btn" id="weatherRefresh">Actualiser</button></div>
+      <div class="gps-alert-card"><div class="gps-alert-title"><span>📡</span><div><b>ALERTE MÉTÉO GPS — ELSA II</b><small>Surveillance autour de ta position réelle</small></div></div><p id="gpsAlertStatus">Alertes GPS désactivées. Active-les pour surveiller le vent, les rafales, les vagues et les risques d’orage autour du bateau.</p><button class="primary-btn full" id="enableGpsAlerts">Activer les alertes selon ma position</button><div class="alert-settings"><label>Seuil vigilance vent <select id="windThreshold"><option value="20">20 km/h</option><option value="25" selected>25 km/h</option><option value="30">30 km/h</option></select></label><label>Seuil vigilance vagues <select id="waveThreshold"><option value="1">1 m</option><option value="1.5" selected>1,5 m</option><option value="2">2 m</option></select></label></div><small class="alert-footnote">Surveillance pendant que l’application reste ouverte. Notifications selon autorisations du téléphone. Ce système est une aide complémentaire, pas une alerte officielle ni un dispositif de sécurité certifié.</small></div>
+      <div id="weatherPanel" class="weather-panel"><div class="loading">Chargement des conditions…</div></div>
+      <div class="notice warning"><b>Ne navigue jamais sur la seule base de cette estimation.</b><p>Les données météo automatiques ne remplacent pas les bulletins officiels Météo-France, les BMS, les observations locales, ni les avis diffusés sur VHF. En cas de doute, reporte la sortie.</p><a href="https://marine.meteofrance.com/" target="_blank" rel="noopener">Bulletins officiels Météo-France Marine ↗</a></div>
+    </section>
+
+    <section class="view" id="view-urgence">
+      <div class="emergency-hero">
+        <div class="eyebrow">SÉCURITÉ AVANT TOUT</div><h1>Urgence en mer</h1>
+        <p>En cas de détresse : alerte immédiatement les secours. Ne perds pas de temps dans l'application.</p>
+        <a class="sos-call" href="tel:196"><span>☎</span><b>APPELER LE 196</b><small>CROSS · secours en mer · gratuit</small></a>
+        <a class="sos-secondary" href="tel:112">Appeler le 112</a>
+        <div class="vhf-banner">📻 VHF MARINE : CANAL 16 — APPEL DE DÉTRESSE</div>
+      </div>
+      <div class="content-pad">
+        <div class="notice danger-note"><b>Important</b><p>En mer, la VHF canal 16 est à privilégier : elle permet au CROSS et aux navires proches de recevoir l'alerte. Le 196 ou le 112 sont les numéros téléphoniques de secours. Le bouton SOS de l'application ne transmet pas automatiquement ta position aux secours.</p></div>
+        <button class="secondary-btn full" id="getEmergencyPosition">📍 Afficher ma position GPS</button>
+        <div id="emergencyPosition" class="position-box">Position non relevée. Active la localisation pour afficher les coordonnées.</div>
+        <div class="section-heading"><h2>Que faire ?</h2></div>
+        <div class="incident-grid">
+          <button class="incident" data-incident="engine">🔧<b>Panne moteur</b><small>Perte de propulsion</small></button>
+          <button class="incident" data-incident="water">💧<b>Voie d'eau</b><small>Entrée d'eau à bord</small></button>
+          <button class="incident" data-incident="fire">🔥<b>Incendie</b><small>Fumée ou feu</small></button>
+          <button class="incident" data-incident="manoverboard">🛟<b>Homme à la mer</b><small>Personne tombée</small></button>
+          <button class="incident" data-incident="medical">🩺<b>Urgence médicale</b><small>Blessure ou malaise</small></button>
+          <button class="incident" data-incident="grounding">⚓<b>Échouement</b><small>Bateau immobilisé</small></button>
+        </div>
+        <div id="incidentAdvice" class="advice-box"><b>Choisis une situation</b><p>Les fiches rappellent les premiers gestes. Elles ne remplacent pas les consignes du CROSS ni une formation de sécurité.</p></div>
+        <div class="section-heading"><h2>Informations à transmettre</h2></div>
+        <ul class="check-list">
+          <li>Nom du bateau : ELSA II</li><li>Position GPS et heure de l'incident</li><li>Nombre de personnes à bord</li><li>Nature de l'incident et évolution</li><li>État des personnes et assistance nécessaire</li><li>Couleur, type et caractéristiques du bateau</li>
+        </ul>
+        <div class="notice"><b>Centre de consultation médicale maritime</b><p>Pour un avis médical en mer : +33 5 34 39 33 33. En situation de détresse, alerte d'abord le CROSS par VHF 16 ou 196.</p><a href="tel:+33534393333">Appeler le CCMM ↗</a></div>
+        <p class="small-muted">Source officielle : <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F33954" target="_blank" rel="noopener">Service-Public — numéros d'urgence</a>.</p>
+      </div>
+    </section>
+
+    <section class="view" id="view-sortie">
+      <div class="page-head"><span class="eyebrow">AVANT DE LARGUER LES AMARRES</span><h1>Préparer ma sortie</h1><p>Une checklist simple à cocher avant chaque départ.</p></div>
+      <div class="notice"><b>Sortie d'Elsa II</b><p>Barquette marseillaise · 7,80 m × 2,40 m · moteur Nanni 30 CV (base Kubota). Capacité indiquée par le propriétaire : 6 personnes maximum — respecte toujours la capacité réglementaire inscrite sur les documents du bateau.</p></div>
+      <div class="checklist-card"><h3>Contrôles bateau</h3><div id="departureChecks"></div></div>
+      <div class="checklist-card"><h3>Sécurité & navigation</h3><div id="safetyChecks"></div></div>
+      <div class="checklist-card"><h3>Équipage & retour</h3><div id="crewChecks"></div></div>
+      <button class="primary-btn full" id="resetChecks">Réinitialiser la checklist</button>
+    </section>
+
+    <section class="view" id="view-technique">
+      <div class="page-head"><span class="eyebrow">LE BATEAU AMBASSADEUR</span><h1>Elsa II · technique</h1><p>Fiche bateau et carnet d'entretien à compléter au fil des sorties.</p></div>
+      <div class="boat-profile">
+        <img src="assets/elsa-ii.jpg" alt="Elsa II">
+        <div><b>ELSA II</b><small>Barquette marseillaise</small><strong>7,80 m × 2,40 m</strong><small>Nanni 30 CV · base Kubota</small></div>
+      </div>
+      <div class="notice warning"><b>Fiche à confirmer</b><p>Les informations ci-dessus reprennent les éléments communiqués pour le projet. Vérifie puissance, capacité, catégorie de navigation, armement et caractéristiques sur les documents officiels du bateau.</p></div>
+      <form id="maintenanceForm" class="form-card"><h3>Ajouter une intervention</h3><label>Date<input type="date" id="maintDate" required></label><label>Type<select id="maintType"><option>Entretien moteur</option><option>Électricité / batteries</option><option>Coque / antifouling</option><option>Transmission / presse-étoupe</option><option>Sécurité</option><option>Autre</option></select></label><label>Description<textarea id="maintDesc" rows="3" placeholder="Huile, filtre, contrôle, réparation…"></textarea></label><label>Coût (€)<input type="number" id="maintCost" min="0" step="0.01" placeholder="0"></label><button class="primary-btn full">Enregistrer l'intervention</button></form>
+      <div class="section-heading"><h2>Historique</h2></div><div id="maintenanceList" class="place-list"></div>
+    </section>
+
+    <section class="view" id="view-carnet">
+      <div class="page-head"><span class="eyebrow">TES SOUVENIRS DE MER</span><h1>Carnet de bord</h1><p>Enregistre tes sorties, tes prises et tes coins préférés. Les données restent sur cet appareil.</p></div>
+      <form id="tripForm" class="form-card"><h3>Nouvelle sortie</h3><label>Date<input type="date" id="tripDate" required></label><label>Secteur<input id="tripArea" placeholder="Ex. Port-Camargue – Espiguette" required></label><label>Équipage<input id="tripCrew" type="number" min="1" max="6" value="2"></label><label>Notes<textarea id="tripNotes" rows="3" placeholder="Météo, navigation, observations…"></textarea></label><button class="primary-btn full">Enregistrer la sortie</button></form>
+      <div class="section-heading"><h2>Mes sorties</h2></div><div id="tripList" class="place-list"></div>
+      <div class="section-heading"><h2>Mes prises</h2></div><div id="catchList" class="place-list"></div>
+      <div class="section-heading"><h2>Mes favoris</h2></div><div id="favoritesList" class="place-list"></div>
+      <button class="secondary-btn full" id="exportData">Exporter mon carnet (JSON)</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <button class="nav-item active" data-view="accueil"><span>⌂</span><small>Accueil</small></button>
+    <button class="nav-item" data-view="carte"><span>⌖</span><small>Carte</small></button>
+    <button class="nav-item" data-view="peche"><span>🐟</span><small>Pêche</small></button>
+    <button class="nav-item" data-view="ports"><span>⚓</span><small>Ports</small></button>
+    <button class="nav-item" data-view="urgence"><span>🆘</span><small>SOS</small></button>
+    <button class="nav-item more-nav" id="moreBtn"><span>☰</span><small>Plus</small></button>
+  </nav>
+  <div class="more-menu" id="moreMenu" hidden>
+    <button data-view="mouillages">🌿 Mouillages & plages</button><button data-view="decouvertes">📍 Découvertes</button><button data-view="restaurants">🍽️ Restaurants</button><button data-view="pique-nique">🧺 Pique-nique</button><button data-view="meteo">🌊 Météo marine</button><button data-view="sortie">🧭 Préparer ma sortie</button><button data-view="technique">🔧 Elsa II technique</button><button data-view="carnet">📒 Carnet de bord</button>
+  </div>
+  <footer>CAP PÊCHE PRO · ELSA II <span>La Méditerranée à portée de main</span></footer>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>
