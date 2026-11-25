@@ -226,6 +226,15 @@
       <div class="weather-controls"><select id="weatherArea"><option value="43.40,3.70">Sète / Agde</option><option value="43.52,4.14" selected>Port-Camargue</option><option value="43.35,5.05">Côte Bleue</option><option value="43.28,5.37">Marseille</option><option value="43.20,5.55">Calanques / Cassis</option></select><button class="secondary-btn" id="weatherRefresh">Actualiser</button></div>
       <div class="gps-alert-card"><div class="gps-alert-title"><span>📡</span><div><b>ALERTE MÉTÉO GPS — ELSA II</b><small>Surveillance autour de ta position réelle</small></div></div><p id="gpsAlertStatus">Alertes GPS désactivées. Active-les pour surveiller le vent, les rafales, les vagues et les risques d’orage autour du bateau.</p><button class="primary-btn full" id="enableGpsAlerts">Activer les alertes selon ma position</button><div class="alert-settings"><label>Seuil vigilance vent <select id="windThreshold"><option value="20">20 km/h</option><option value="25" selected>25 km/h</option><option value="30">30 km/h</option></select></label><label>Seuil vigilance vagues <select id="waveThreshold"><option value="1">1 m</option><option value="1.5" selected>1,5 m</option><option value="2">2 m</option></select></label></div><small class="alert-footnote">Surveillance pendant que l’application reste ouverte. Notifications selon autorisations du téléphone. Ce système est une aide complémentaire, pas une alerte officielle ni un dispositif de sécurité certifié.</small></div>
       <div id="weatherPanel" class="weather-panel"><div class="loading">Chargement des conditions…</div></div>
+      <section class="tide-card" aria-labelledby="tideTitle">
+        <div class="tide-head"><span>🌊</span><div><span class="eyebrow">PORT D’ATTACHE D’ELSA II</span><h2 id="tideTitle">Marées · Le Grau-du-Roi</h2></div></div>
+        <p>Horaires et hauteurs de pleine mer et basse mer à consulter pour la date choisie sur la source Météo-France / SHOM.</p>
+        <div class="tide-facts"><div><small>Marée montante</small><strong>≈ 6 h</strong></div><div><small>Marée descendante</small><strong>≈ 6 h</strong></div><div><small>Cycle complet</small><strong>≈ 12 h 25</strong></div></div>
+        <p class="tide-note">Durées indicatives entre deux extrêmes. Au Grau-du-Roi, l’amplitude astronomique est généralement faible : le vent et la pression atmosphérique peuvent modifier sensiblement le niveau d’eau. Les hauteurs exactes varient selon la date.</p>
+        <a class="primary-btn full tide-link" href="https://meteofrance.com/meteo-marine/le-grau-du-roi/570268/maree" target="_blank" rel="noopener">Voir les horaires et hauteurs du jour (Météo-France / SHOM) ↗</a>
+        <small class="small-muted">Pas de coefficient de marée à utiliser comme sur les façades Manche–Atlantique. Pour la navigation, vérifier les données officielles et les conditions locales.</small>
+      </section>
+
       <div class="notice warning"><b>Ne navigue jamais sur la seule base de cette estimation.</b><p>Les données météo automatiques ne remplacent pas les bulletins officiels Météo-France, les BMS, les observations locales, ni les avis diffusés sur VHF. En cas de doute, reporte la sortie.</p><a href="https://marine.meteofrance.com/" target="_blank" rel="noopener">Bulletins officiels Météo-France Marine ↗</a></div>
     </section>
 
@@ -276,8 +285,35 @@
         <div><b>ELSA II</b><small>Barquette marseillaise</small><strong>7,80 m × 2,40 m</strong><small>Nanni 30 CV · base Kubota</small></div>
       </div>
       <div class="notice warning"><b>Fiche à confirmer</b><p>Les informations ci-dessus reprennent les éléments communiqués pour le projet. Vérifie puissance, capacité, catégorie de navigation, armement et caractéristiques sur les documents officiels du bateau.</p></div>
-      <form id="maintenanceForm" class="form-card"><h3>Ajouter une intervention</h3><label>Date<input type="date" id="maintDate" required></label><label>Type<select id="maintType"><option>Entretien moteur</option><option>Électricité / batteries</option><option>Coque / antifouling</option><option>Transmission / presse-étoupe</option><option>Sécurité</option><option>Autre</option></select></label><label>Description<textarea id="maintDesc" rows="3" placeholder="Huile, filtre, contrôle, réparation…"></textarea></label><label>Coût (€)<input type="number" id="maintCost" min="0" step="0.01" placeholder="0"></label><button class="primary-btn full">Enregistrer l'intervention</button></form>
-      <div class="section-heading"><h2>Historique</h2></div><div id="maintenanceList" class="place-list"></div>
+      <div class="notice"><b>Suivi des travaux</b><p>Retrouve l’album photo et le carnet des interventions dans la rubrique « Réparations ».</p></div>
+    </section>
+
+
+    <section class="view" id="view-equipage">
+      <div class="page-head"><span class="eyebrow">LES HOMMES D’ELSA II</span><h1>L’équipage</h1><p>Quatre membres, tous à égalité. Portraits et souvenirs issus exclusivement de tes photos.</p></div>
+      <div class="crew-group-photo"><img src="assets/crew-family.jpg" alt="Photo réelle de l’équipage et des proches réunis"><span>Les souvenirs de l’équipage</span></div>
+      <div class="crew-grid">
+        <article class="crew-card"><img src="assets/crew-stephen.jpg" alt="Portrait réel de Stephen"><div><small>MEMBRE DE L’ÉQUIPAGE</small><h2>Stephen</h2></div></article>
+        <article class="crew-card"><img src="assets/crew-remy.jpg" alt="Portrait réel de Rémy"><div><small>MEMBRE DE L’ÉQUIPAGE</small><h2>Rémy</h2></div></article>
+        <article class="crew-card"><img src="assets/crew-pierre.jpg" alt="Portrait réel de Pierre"><div><small>MEMBRE DE L’ÉQUIPAGE</small><h2>Pierre</h2></div></article>
+        <article class="crew-card"><img src="assets/crew-gauthier.jpg" alt="Portrait réel de Gauthier"><div><small>MEMBRE DE L’ÉQUIPAGE</small><h2>Gauthier</h2></div></article>
+      </div>
+      <div class="notice"><b>Équipage ELSA II</b><p>Stephen · Rémy · Pierre · Gauthier. Une galerie de souvenirs construite avec les photographies originales transmises.</p></div>
+      <div class="crew-gallery"><figure><img src="assets/el-sa-port.jpg" alt="Elsa II au port du Grau-du-Roi"><figcaption>Elsa II au port du Grau-du-Roi</figcaption></figure><figure><img src="assets/port-aerial.jpg" alt="Vue aérienne du port"><figcaption>Le port d’attache</figcaption></figure></div>
+    </section>
+
+    <section class="view" id="view-reparations">
+      <div class="page-head"><span class="eyebrow">RESTAURATION & ENTRETIEN</span><h1>Réparations d’ELSA II</h1><p>Un album chronologique des travaux réalisés, avec les photos originales du bateau et du moteur.</p></div>
+      <div class="repair-gallery">
+        <figure><img src="assets/repair-hull-before.jpg" alt="Coque avant restauration"><figcaption><b>La coque avant travaux</b><span>État initial et reprises de coque</span></figcaption></figure>
+        <figure><img src="assets/repair-work-onboard.jpg" alt="Travaux à bord"><figcaption><b>Travaux à bord</b><span>Ouverture et intervention sur le bateau</span></figcaption></figure>
+        <figure><img src="assets/repair-engine-before.jpg" alt="Ancien moteur avant intervention"><figcaption><b>Ancien moteur</b><span>Avant démontage et remise en état</span></figcaption></figure>
+        <figure><img src="assets/repair-engine-restored.jpg" alt="Moteur remis en état"><figcaption><b>Moteur remis en état</b><span>Bloc moteur bleu photographié après rénovation</span></figcaption></figure>
+        <figure><img src="assets/repair-hull-finish.jpg" alt="Coque après travaux"><figcaption><b>Coque après travaux</b><span>Finition extérieure</span></figcaption></figure>
+        <figure><img src="assets/repair-deck-finish.jpg" alt="Pont et intérieur après travaux"><figcaption><b>Pont et intérieur</b><span>Aménagement après rénovation</span></figcaption></figure>
+      </div>
+      <form id="maintenanceForm" class="form-card"><h3>Ajouter une intervention</h3><label>Date<input type="date" id="maintDate" required></label><label>Type<select id="maintType"><option>Entretien moteur</option><option>Électricité / batteries</option><option>Coque / antifouling</option><option>Transmission / presse-étoupe</option><option>Aménagement / pont</option><option>Sécurité</option><option>Autre</option></select></label><label>Description<textarea id="maintDesc" rows="3" placeholder="Travaux réalisés, pièces remplacées, observations…"></textarea></label><label>Coût (€)<input type="number" id="maintCost" min="0" step="0.01" placeholder="0"></label><button class="primary-btn full">Enregistrer l’intervention</button></form>
+      <div class="section-heading pad-x"><h2>Historique des interventions</h2></div><div id="maintenanceList" class="place-list"></div>
     </section>
 
     <section class="view" id="view-carnet">
@@ -299,7 +335,7 @@
     <button class="nav-item more-nav" id="moreBtn"><span>☰</span><small>Plus</small></button>
   </nav>
   <div class="more-menu" id="moreMenu" hidden>
-    <button data-view="escapades">🌴 Promenades & escapades</button><button data-view="mouillages">🌿 Mouillages & plages</button><button data-view="decouvertes">📍 Découvertes</button><button data-view="restaurants">🍽️ Restaurants</button><button data-view="pique-nique">🧺 Pique-nique</button><button data-view="meteo">🌊 Météo marine</button><button data-view="sortie">🧭 Préparer ma sortie</button><button data-view="technique">🔧 Elsa II technique</button><button data-view="carnet">📒 Carnet de bord</button>
+    <button data-view="escapades">🌴 Promenades & escapades</button><button data-view="mouillages">🌿 Mouillages & plages</button><button data-view="decouvertes">📍 Découvertes</button><button data-view="restaurants">🍽️ Restaurants</button><button data-view="pique-nique">🧺 Pique-nique</button><button data-view="meteo">🌊 Météo marine</button><button data-view="sortie">🧭 Préparer ma sortie</button><button data-view="equipage">👥 Équipage</button><button data-view="reparations">🛠️ Réparations & photos</button><button data-view="technique">🔧 Elsa II technique</button><button data-view="carnet">📒 Carnet de bord</button>
   </div>
   <footer>CAP PÊCHE PRO · ELSA II <span>La Méditerranée à portée de main</span></footer>
 </div>

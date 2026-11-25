@@ -107,7 +107,7 @@ $$("[data-esc-filter]").forEach(btn=>btn.addEventListener("click",()=>{
  const el=$("#"+ids[target]); if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
 }));
 
-function showView(id){$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+id));$$(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#moreMenu").hidden=true;window.scrollTo(0,0);if(id==="carte")setTimeout(initMap,120);if(id==="meteo")loadWeather();if(id==="carnet")renderAll();if(id==="escapades")renderEscapades()}
+function showView(id){$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+id));$$(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.view===id));$("#moreMenu").hidden=true;window.scrollTo(0,0);if(id==="carte")setTimeout(initMap,120);if(id==="meteo")loadWeather();if(id==="reparations")renderMaintenance();if(id==="carnet")renderAll();if(id==="escapades")renderEscapades()}
 $$("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
 $$("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 $("#moreBtn").onclick=()=>$("#moreMenu").hidden=!$("#moreMenu").hidden;
